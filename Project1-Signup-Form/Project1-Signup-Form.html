@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="Project1-Signup-Form.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="left">
+        <div class="compname">
+          <div class="img">
+            <img src="Assets/odin-lined.png" alt="Odin logo" />
+            <h2>ODIN</h2>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="description">
+          <p>
+            This is not a real online service! You know you need something like
+            this in your life to help you realize your deepest dreams.
+            
+          </p>
+          <p>Sign up <i>now</i> to get started</p>
+          <p>You <i>know</i> you want to.</p>
+        </div>
+        <div class="form">
+            <div class="para"> <p>Let's do this!</p></div>
+           
+          <form action="post">
+            <div class="input"><label for="First_Name">FIRST NAME</label>
+                <input type="text" name="First_Name" id="First_Name" required/></div>
+            <div class="input"> <label for="Last_Name">LAST NAME</label>
+                <input type="text" name="Last_Name" id="Last_Name"required /></div>
+            <div class="input">  <label for="Email">EMAIL</label>
+                <input type="email" name="Email" id="Email"  required/></div>
+            <div class="input"> <label for="Phone">PHONE NUMBER</label>
+                <input type="number" name="Phone" id="Phone" minlength="11" maxlength="13" required />
+                </div>
+            
+            
+            
+            
+                <div class="input password" ><label for="Password">PASSWORD</label>
+                <input type="password" name="Password" id="Password" minlength="6" required /></div>
+            
+            
+            
+            
+            <div class="input password"> <label for="cPassword">CONFIRM PASSWORD</label>
+                <input type="password" name="cPassword" id="cPassword" minlength="6" required/></div>
+           
+          
+           
+            
+           
+          </form>
+        </div>
+        <div class="accbtn">
+          <button type="submit">Create Account</button>
+          <p>Already have an account? <a href="#">Log in</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

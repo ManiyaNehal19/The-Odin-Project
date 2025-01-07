@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Odin Library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <h1>dash.</h1>
+      <img class="img" src="Assests/home.svg" alt="" />
+      <img class="img" src="Assests/shield.svg" alt="" />
+      <img class="img" src="Assests/cog.svg" alt="" />
+      <button class="add-new"><img class="img" src="Assests/plus-circle-outline.svg" alt=""></button>
+      <dialog id="bookFormDialog">
+        <form id="bookForm">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required><br>
+      
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required><br>
+      
+          <label for="pages">Number of Pages:</label>
+          <input type="number" id="pages" name="pages" required><br>
+      
+          <label for="read">Have you read it?</label>
+          <input type="checkbox" id="read" name="read"><br>
+      
+          <button type="submit">Add Book</button>
+        </form>
+      </dialog>
+    </div>
+
+    <div class="main">
+      <header>
+        <div id="welcome">
+          <h1>Welcome,</h1>
+          <p>to the ultimate Odin Library</p>
+        </div>
+        <div id="search">
+          <label for="text" id="for-search" name="for-search"
+            ><img src="Assests/magnify.svg" alt=""
+          /></label>
+          <input type="text" />
+        </div>
+        <div id="profile">
+          <img src="Assests/download (1).jpg" alt="" />
+        </div>
+      </header>
+      <div class="container"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
