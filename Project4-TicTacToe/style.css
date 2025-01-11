@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'Jersey15-Regular';
+    src: url('Assests/Jersey_15/Jersey15-Regular.ttf') format('opentype'); /* Ensure the path is correct */
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+header{
+   
+        height: 10vh;
+        width: 100vw;
+        background-color: #f54e62 ; /* Deep navy blue */
+        color: #ffffff; /* White text */
+        display: flex;
+        align-items: center;
+        font-size: larger;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    
+    
+
+}
+header h1{
+    margin-left: 12px;
+}
+*{
+    font-family: 'Jersey15-Regular';
+    box-sizing: content-box;
+    margin: 0px;
+}
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    width: 100vw;
+}
+.player{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#continue{
+    height: 50px;
+    width: 200px;
+    border: none;
+    font-size: 35px;
+    border-radius: 12px;
+    background-color: #f54e62;
+    color: white;
+    box-shadow: 0px 4px 6px  rgba(0,0,0,0.1);
+}
+.player{
+    font-size: xx-large;
+    
+}
+.player #p1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color:#f36840 ;
+    margin: 5px 23px 23px 23px;
+
+}
+.player #p2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color:#8ce335 ;
+    margin: 5px 23px 23px 23px;
+
+}
+.player input{
+    height: 50px;
+    width: 170px;
+    border: none;
+    border-radius: 12px;
+    background-color: #d3d3d3;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 6px  rgba(0,0,0,0.1);
+
+
+}
+.player #p2 input:focus {
+    border: 2px solid #8ce335 ;
+    
+    outline: none;
+}
+.player #p1 input:focus{
+    border: 2px solid #f36840;
+    
+    outline: none;
+}
+button:hover{
+    cursor: pointer;
+}
