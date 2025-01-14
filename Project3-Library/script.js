@@ -1,140 +1,92 @@
-const myLibrary = [
-  {
-    title: "Billy Summer",
-    author: "Stephen King",
-    pagecount: 300,
-    readstatus: false
-  },
-  {
-    title: "1984",
-    author: "George Orwell",
-    pagecount: 328,
-    readstatus: true
-  },
-  {
-    title: "The Catcher in the Rye",
-    author: "J.D. Salinger",
-    pagecount: 277,
-    readstatus: false
-  },
-  {
-    title: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
-    pagecount: 180,
-    readstatus: true
-  },
-  {
-    title: "To Kill a Mockingbird",
-    author: "Harper Lee",
-    pagecount: 281,
-    readstatus: false
-  },
-  {
-    title: "Moby Dick",
-    author: "Herman Melville",
-    pagecount: 635,
-    readstatus: true
-  },
-  {
-    title: "Pride and Prejudice",
-    author: "Jane Austen",
-    pagecount: 432,
-    readstatus: false
-  },
-  {
-    title: "The Hobbit",
-    author: "J.R.R. Tolkien",
-    pagecount: 310,
-    readstatus: true
+
+
+class Book {
+  constructor(title, author, pagecount, readstatus) {
+    this.title = title;
+    this.author = author;
+    this.pagecount = pagecount;
+    this.readstatus = readstatus;
   }
-];
 
-
-
-function Book(title, author, pagecount, readstatus) {
-  this.title  = title;
-  this.author = author;
-  this.pagecount= pagecount;
-  this.readstatus=readstatus;
-
+  toggleReadStatus() {
+    this.readstatus = !this.readstatus;
+  }
 }
 
-function addBookToLibrary(title, author, pagecount, readstatus) {
-  const book = new Book(title, author, pagecount, readstatus);
-  myLibrary.push(book);
+class Library {
+  constructor() {
+    this.books = [];
+  }
+
+  addBook(book) {
+    this.books.push(book);
+  }
+
+  removeBook(title) {
+    this.books = this.books.filter(book => book.title !== title);
+  }
+
+  getBooks() {
+    return this.books;
+  }
+
+  toggleBookStatus(title) {
+    const book = this.books.find(book => book.title === title);
+    if (book) {
+      book.toggleReadStatus();
+    }
+  }
 }
 
+const myLibrary = new Library();
 
-function displaybook() {
-  const leng = myLibrary.length;
+function displayBooks() {
   const container = document.querySelector(".container");
-  let readstat;
-  container.innerHTML = ""; // Clear the container before re-rendering the books
+  container.innerHTML = ""; // Clear previous content
 
-  for (let i = 0; i < leng; i++) {
+  myLibrary.getBooks().forEach(book => {
     const div = document.createElement("div");
     div.classList.add("book");
-    div.id = `${myLibrary[i].title}`;
-    readstat = myLibrary[i].readstatus ? "Read" : "Not Read";
+    div.id = book.title;
+
+    const readStatusText = book.readstatus ? "Read" : "Not Read";
 
     div.innerHTML = `
-      <h2>Title: ${myLibrary[i].title}</h2>
-      <p>Author: ${myLibrary[i].author}</p>
-      <p>Page Count: ${myLibrary[i].pagecount}</p>
-      <p>Status: ${readstat}</p>
-      <div class="button"> 
+      <h2>Title: ${book.title}</h2>
+      <p>Author: ${book.author}</p>
+      <p>Page Count: ${book.pagecount}</p>
+      <p>Status: ${readStatusText}</p>
+      <div class="button">
         <button class="toggle">Toggle Read Status</button>
         <button class="delete">Delete</button>
       </div>
     `;
-    
-    container.appendChild(div); // Append the div element to the container
-  }
 
+    // Apply inline styles
+    div.style.backgroundColor = "#f5f1fb";
+    div.style.borderRadius = "23px";
+    div.style.display = "flex";
+    div.style.alignItems = "center";
+    div.style.justifyContent = "center";
+    div.style.flexDirection = "column";
+    div.style.paddingBottom = "12px";
+    div.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
 
-  const toggleButtons = document.querySelectorAll(".toggle");
-  toggleButtons.forEach((toggleButton, index) => {
-    toggleButton.addEventListener("click", () => {
-      myLibrary[index].readstatus = !myLibrary[index].readstatus;
-      displaybook();
-    });
+    container.appendChild(div);
   });
-  const deleteButtons = document.querySelectorAll(".delete");
-  deleteButtons.forEach((delButton) => {
-    delButton.addEventListener("click", () => {
-      const bookDiv = delButton.closest(".book");  
-      const bookId = bookDiv.id; 
-      const bookIndex = myLibrary.findIndex((book) => book.title === bookId);
-  
-      if (bookIndex !== -1) {
-        myLibrary.splice(bookIndex, 1);  
-        displaybook(); 
-      }
-    });
-  });
-  // Styling the books
-  const divbook = document.querySelectorAll(".book");
-  divbook.forEach((book) => {
-    book.style.backgroundColor = "#f5f1fb";
-    book.style.borderRadius = "23px";
-    book.style.display = "flex";
-    book.style.alignItems = "center";
-    book.style.justifyContent = "center";
-    book.style.flexDirection = "column";
-    book.style.paddingBottom = "12px";
-    book.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-  });
+
+  attachEventListeners();
 
   // Style the buttons
   const buttons = document.querySelectorAll("button");
-  buttons.forEach((but) => {
+  buttons.forEach(but => {
     but.style.height = "35px";
     but.style.width = "150px";
     but.style.fontSize = "15px";
     but.style.color = "white";
     but.style.border = "none";
     but.style.borderRadius = "23px";
-    
+
     if (but.innerHTML === "Toggle Read Status") {
       but.style.backgroundColor = "#ff7ea5";
     } else {
@@ -143,24 +95,60 @@ function displaybook() {
   });
 }
 
-displaybook();
+function attachEventListeners() {
+  const toggleButtons = document.querySelectorAll(".toggle");
+  toggleButtons.forEach(button => {
+    button.addEventListener("click", event => {
+      const bookTitle = event.target.closest(".book").id;
+      myLibrary.toggleBookStatus(bookTitle);
+      displayBooks();
+    });
+  });
+
+  const deleteButtons = document.querySelectorAll(".delete");
+  deleteButtons.forEach(button => {
+    button.addEventListener("click", event => {
+      const bookTitle = event.target.closest(".book").id;
+      myLibrary.removeBook(bookTitle);
+      displayBooks();
+    });
+  });
+}
+
+// Form handling
 const bookFormDialog = document.getElementById("bookFormDialog");
-const addNew = document.querySelector(".add-new");
-const forms = document.getElementById("bookForm");
-addNew.style.backgroundColor = "#5c3882";
-addNew.addEventListener("click", ()=>{
+const addNewButton = document.querySelector(".add-new");
+const form = document.getElementById("bookForm");
+
+addNewButton.style.backgroundColor = "#5c3882";
+addNewButton.addEventListener("click", () => {
   bookFormDialog.showModal();
-})
-forms.addEventListener("submit", (event)=>{
+});
+
+form.addEventListener("submit", event => {
   event.preventDefault();
+
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
-  const pages = document.getElementById("pages").value;
+  const pages = parseInt(document.getElementById("pages").value, 10);
   const read = document.getElementById("read").checked;
-  addBookToLibrary(title, author, pages, read);
-  forms.reset();
-  bookFormDialog.close();
-displaybook();
-addNew.style.backgroundColor = "#5c3882";
 
-})
+  const newBook = new Book(title, author, pages, read);
+  myLibrary.addBook(newBook);
+
+  form.reset();
+  bookFormDialog.close();
+  displayBooks();
+});
+
+// Initial book list
+myLibrary.addBook(new Book("Billy Summer", "Stephen King", 300, false));
+myLibrary.addBook(new Book("1984", "George Orwell", 328, true));
+myLibrary.addBook(new Book("The Catcher in the Rye", "J.D. Salinger", 277, false));
+myLibrary.addBook(new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, true));
+myLibrary.addBook(new Book("To Kill a Mockingbird", "Harper Lee", 281, false));
+myLibrary.addBook(new Book("Moby Dick", "Herman Melville", 635, true));
+myLibrary.addBook(new Book("Pride and Prejudice", "Jane Austen", 432, false));
+myLibrary.addBook(new Book("The Hobbit", "J.R.R. Tolkien", 310, true));
+
+displayBooks();
