@@ -1,1 +1,2 @@
-alert("Hello is everything working");
+import { home } from "./home.js";
+home();
