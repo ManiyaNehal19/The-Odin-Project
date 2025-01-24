@@ -1,4 +1,5 @@
 import burgerImage from '../Assests/Selbstgemachte Pommes_ So werden sie perfekt _ Stories _ Kitchen Stories.jpg';
+import './style.css';
 
 export function home() {
   const divContent = document.querySelector("#content");

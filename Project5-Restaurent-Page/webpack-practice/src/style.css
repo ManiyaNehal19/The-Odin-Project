@@ -1,8 +1,36 @@
-*{
+
+* {
     margin: 0;
     padding: 0;
-}
-header{
-    height: 10%;
+  }
+  header {
+    height: 10vh;
     background-color: #d94539;
-}
+  }
+  nav {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  button {
+    color: #f6e5dd;
+    background-color: #d94539;
+    border: none;
+    font-size: 23px;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin: 10px;
+  }
+  #Shop-Now{
+    background-color: #af4d44;
+    border-radius: 23px;
+    height: 45px;
+    width: 150px;
+  }
+  h2{
+    color: #383130;
+  }
+  button:hover{
+    cursor: pointer;
+  }

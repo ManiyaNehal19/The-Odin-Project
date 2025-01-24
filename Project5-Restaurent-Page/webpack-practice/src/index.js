@@ -1,7 +1,6 @@
 import { home } from "./home.js";
 import {menu} from './Menu.js'
 import {about} from './About.js'
-import './style.css';
 home();
 const navHome = document.querySelector("#home-button");
 const navAbout = document.querySelector("#about-button");
