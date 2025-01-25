@@ -8,7 +8,7 @@ export function home() {
   textDiv.id = "text";
   textDiv.innerHTML = `
     <h1>
-      Burger Made With Love in Kansas City
+      Burger Made With Love in Karachi City
     </h1>
   `;
   Object.assign(textDiv.style, {
