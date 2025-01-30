@@ -1,0 +1,19 @@
+*body{
+    margin: 0;
+    padding: 0;
+}
+#side-bar{
+    width: 20vw;
+    height: 100%;
+    background-color: #f3f6ff;
+}
+#side-bar #todo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+#side-bar #todo h2{
+     font-size: larger;
+     font-size: 900;
+
+}
